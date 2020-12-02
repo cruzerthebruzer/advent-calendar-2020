@@ -1,5 +1,7 @@
 package days.day2
 
+import java.util.regex.Pattern
+
 data class Day2PasswordPayload(
     val min: Int,
     val max: Int,
@@ -9,15 +11,13 @@ data class Day2PasswordPayload(
     companion object {
         // Format is 1-3 a: abcde
         fun fromLine(line: String): Day2PasswordPayload {
-            val (details, value) = line.split(": ")
-            val (range, requiredValue) = details.split(" ")
-            val (min, max) = range.split("-").map { number -> number.toInt() }
+            val (min, max, requiredValue, password) = line.split(Pattern.compile(": | |-"))
 
             return Day2PasswordPayload(
-                min,
-                max,
+                min.toInt(),
+                max.toInt(),
                 requiredValue[0],
-                value
+                password
             )
         }
     }

@@ -22,5 +22,4 @@ class Day2Part2 : () -> Int {
             }
         }
     }
-
 }

@@ -9,7 +9,6 @@ class Day1 : () -> Int? {
     override fun invoke(): Int? {
         val lines = reader.read(inputPath).map { it.toInt() }
         val result = getMultipleOf2020Sum(lines)
-        println(result)
         return if (result != null) result.first * result.second else null
     }
 
@@ -31,9 +30,20 @@ class Day1 : () -> Int? {
     }
 
     private fun matchSum(numbers: List<Int>, match: Int): Pair<Int, Int>? {
-        for (number in numbers) {
-            val result = numbers.binarySearch(match - number)
-            return if (result >= 0) number to numbers[result] else continue
+        val matchIsEven = match % 2 == 0
+        for (index in numbers.indices) {
+            val number = numbers[index]
+            if (matchIsEven && number == match / 2) {
+                val nextNumber = if (index + 1 < numbers.size) numbers[index + 1] else null
+                if (nextNumber == number) {
+                    return number to nextNumber
+                } else {
+                    continue
+                }
+            } else {
+                val result = numbers.binarySearch(match - number)
+                return if (result >= 0) number to numbers[result] else continue
+            }
         }
 
         return null

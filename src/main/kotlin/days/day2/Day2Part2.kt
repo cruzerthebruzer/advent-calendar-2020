@@ -15,7 +15,7 @@ class Day2Part2 : () -> Int {
             val firstValue = passwordChars[min - 1] == requiredValue
             val secondValue = passwordChars[max - 1] == requiredValue
 
-            if (firstValue && !secondValue || !firstValue && secondValue) {
+            if (firstValue.xor(secondValue)) {
                 1
             } else {
                 0

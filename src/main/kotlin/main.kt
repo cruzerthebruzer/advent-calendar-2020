@@ -1,12 +1,15 @@
-import days.day1.Day1
-import days.day2.Day2
+import days.day3.Day3
+import days.day3.Day3Part2
+import days.day3.Day3Part2Runner
 
 fun main() {
-    val day1 = Day1()
-    val day1Result = day1()
-    println(day1Result)
-    val day2 = Day2()
-    val day2Result = day2()
-    println(day2Result)
+    Day3()()
+    runDay3()
 }
 
+fun runDay3() {
+    val day3 = Day3()()
+    println(day3)
+    val day3Part2Result = Day3Part2Runner.runDefault()
+    println(day3Part2Result)
+}

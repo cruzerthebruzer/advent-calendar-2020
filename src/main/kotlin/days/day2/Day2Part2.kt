@@ -10,7 +10,6 @@ class Day2Part2 : () -> Int {
         val lines = reader.read(inputPath)
         return lines.sumBy { line ->
             val (min, max, requiredValue, password) = Day2PasswordPayload.fromLine(line)
-
             val passwordChars = password.toCharArray()
             val firstValue = passwordChars[min - 1] == requiredValue
             val secondValue = passwordChars[max - 1] == requiredValue

@@ -22,12 +22,7 @@ fun ski(slope: List<CharArray>, down: Int, right: Int): SkiTreeState {
         .fold(SkiTreeState(0, 0, 0)) { (currentDown, currentRight, currentCollisions), _ ->
             val collision = slope[currentDown][currentRight].isTree()
             val updatedCollisions = if (collision) currentCollisions + 1 else currentCollisions
-            val newRight = if (currentRight + right >= width) {
-                currentRight + right - width
-            } else {
-                currentRight + right
-            }
-            SkiTreeState(currentDown + down, newRight, updatedCollisions)
+            SkiTreeState(currentDown + down, (currentRight + right) % width, updatedCollisions)
         }
 }
 

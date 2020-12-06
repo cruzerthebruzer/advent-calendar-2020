@@ -1,9 +1,7 @@
 import days.day3.Day3
 import days.day3.Day3Part2Runner
-import days.day4.Day4Runner
 
 fun main() {
-    println(Day4Runner.run())
 }
 
 fun runDay3() {

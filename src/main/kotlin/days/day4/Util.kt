@@ -1,7 +1,5 @@
 package days.day4
 
-import util.LineAggregator
-
 data class Passport(
     val birthYear: Int,
     val issueYear: Int,
@@ -29,7 +27,7 @@ data class Passport(
 }
 
 fun convertLinesToPassports(lines: List<String>, validityCheck: Map<String, String>.() -> Boolean): List<Passport?> {
-    return LineAggregator().aggregate(lines).map { line ->
+    return lines.map { line ->
         val fields = line.split(' ')
         val fieldMap = mutableMapOf<String, String>()
         fields.forEach { field ->

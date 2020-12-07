@@ -23,5 +23,4 @@ fun countQuestions(lines: List<String>) = lines.sumBy { line ->
     val set = mutableSetOf<Int>()
     line.chars().forEach { char -> set.add(char) }
     set.size
-
 }

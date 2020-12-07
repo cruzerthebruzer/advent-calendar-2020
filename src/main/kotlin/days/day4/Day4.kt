@@ -18,5 +18,3 @@ object Day4Runner {
         return result.count { it != null }
     }
 }
-
-

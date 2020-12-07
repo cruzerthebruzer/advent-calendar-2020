@@ -1,7 +1,6 @@
 package days.day4
 
-import util.concatenateWithSpace
-import util.isLastIndex
+import util.LineAggregator
 
 data class Passport(
     val birthYear: Int,
@@ -29,42 +28,21 @@ data class Passport(
     }
 }
 
-data class ReductionPayload(
-    val currentValue: String?,
-    val currentPassports: List<Passport?>
-)
-
 fun convertLinesToPassports(lines: List<String>, validityCheck: Map<String, String>.() -> Boolean): List<Passport?> {
-    return lines.foldIndexed(ReductionPayload(null, listOf())) { index, acc, line ->
-        val isLastLine = lines.isLastIndex(index)
-        if (line.trim().isEmpty() || isLastLine) {
-            val fields = if (isLastLine) {
-                (acc.currentValue!! + " " + line).split(' ')
-            } else {
-                acc.currentValue?.split(' ')
-            }
-            if (fields != null) {
-                val fieldMap = mutableMapOf<String, String>()
-                fields.forEach { field ->
-                    val (key, value) = field.split(':')
-                    fieldMap[key] = value
-                }
-
-                if (fieldMap.validityCheck()) {
-                    ReductionPayload(null, acc.currentPassports.plus(Passport.fromMap(fieldMap)))
-                } else {
-                    ReductionPayload(null, acc.currentPassports.plus(null as Passport?))
-                }
-            } else {
-                /**
-                 * If current value is null there's no previous input
-                 */
-                acc
-            }
-        } else {
-            ReductionPayload(acc.currentValue.concatenateWithSpace(line), acc.currentPassports)
+    return LineAggregator().aggregate(lines).map { line ->
+        val fields = line.split(' ')
+        val fieldMap = mutableMapOf<String, String>()
+        fields.forEach { field ->
+            val (key, value) = field.split(':')
+            fieldMap[key] = value
         }
-    }.currentPassports
+
+        if (fieldMap.validityCheck()) {
+            Passport.fromMap(fieldMap)
+        } else {
+            null
+        }
+    }
 }
 
 fun String?.validateYear(min: Int, max: Int): Boolean = if (this == null) {

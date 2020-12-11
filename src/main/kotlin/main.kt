@@ -6,9 +6,12 @@ import days.day6.Day6Part2Runner
 import days.day6.Day6Runner
 import days.day7.Day7Part2Runner
 import days.day7.Day7Runner
+import days.day8.Day8
+import days.day8.Day8Part2Runner
+import days.day8.Day8Runner
 
 fun main() {
-    runDay7()
+    println(Day8Part2Runner.run())
 }
 
 fun runDay3() {

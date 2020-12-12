@@ -1,3 +1,6 @@
+import days.day10.Day10Part2
+import days.day10.Day10Part2Runner
+import days.day10.Day10Runner
 import days.day3.Day3
 import days.day3.Day3Part2Runner
 import days.day4.Day4Part2Runner
@@ -12,7 +15,25 @@ import days.day9.Day9Part2Runner
 import days.day9.Day9Runner
 
 fun main() {
-    println(day9())
+    println(
+        Day10Part2().invoke(
+            listOf(
+                "16",
+                "10",
+                "15",
+                "5",
+                "1",
+                "11",
+                "7",
+                "19",
+                "6",
+                "12",
+                "4",
+            )
+        )
+    )
+
+    println(Day10Part2Runner.run())
 }
 
 fun runDay3() {
@@ -43,16 +64,23 @@ fun runDay7() {
     println(day7Part2)
 }
 
-fun day8() {
+fun runDay8() {
     val day8 = Day8Runner.run()
     println(day8)
     val day8Part2 = Day8Part2Runner.run()
     println(day8Part2)
 }
 
-fun day9() {
+fun runDay9() {
     val day9 = Day9Runner.run()
     println(day9)
     val day9Part2 = Day9Part2Runner.run()
     println(day9Part2)
+}
+
+fun runDay10() {
+    val day10 = Day10Runner.run()
+    println(day10)
+    val day10Part2 = Day10Part2Runner.run()
+    println(day10Part2)
 }

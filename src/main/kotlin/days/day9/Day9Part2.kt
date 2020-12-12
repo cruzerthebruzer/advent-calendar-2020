@@ -5,7 +5,7 @@ import util.FileReader
 class Day9Part2 : (Int, List<String>) -> Pair<Double, Double>? {
     override fun invoke(preamble: Int, lines: List<String>): Pair<Double, Double>? {
         val doubleList = lines.map(String::toDouble)
-        val error = EncodingError(preamble).findError(doubleList)
+        val error = EncodingErrorFinder(preamble).findError(doubleList)
         for ((firstIndex, first) in doubleList.withIndex()) {
             var sum = first
             for (secondIndex in firstIndex + 1 until doubleList.size) {

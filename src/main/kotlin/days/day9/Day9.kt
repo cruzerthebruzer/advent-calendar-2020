@@ -4,7 +4,7 @@ import util.FileReader
 
 class Day9 : (Int, List<String>) -> Double? {
     override fun invoke(preamble: Int, lines: List<String>): Double? {
-        return EncodingError(preamble).findError(lines.map(String::toDouble))
+        return EncodingErrorFinder(preamble).findError(lines.map(String::toDouble))
     }
 }
 

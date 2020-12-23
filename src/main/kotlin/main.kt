@@ -1,9 +1,8 @@
-import days.day10.Day10Part2
 import days.day10.Day10Part2Runner
 import days.day10.Day10Runner
-import days.day11.Day11Part2
 import days.day11.Day11Part2Runner
 import days.day11.Day11Runner
+import days.day12.Day12Runner
 import days.day3.Day3
 import days.day3.Day3Part2Runner
 import days.day4.Day4Part2Runner
@@ -18,7 +17,7 @@ import days.day9.Day9Part2Runner
 import days.day9.Day9Runner
 
 fun main() {
-    runDay11()
+    runDay12()
 }
 
 fun runDay3() {
@@ -75,4 +74,9 @@ fun runDay11() {
     println(day11)
     val day11Part2 = Day11Part2Runner.run()
     println(day11Part2)
+}
+
+fun runDay12() {
+    val day12 = Day12Runner.run()
+    println(day12)
 }
